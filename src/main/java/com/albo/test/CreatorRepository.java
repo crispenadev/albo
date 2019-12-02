@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.albo.domain.Colaborator;
 
 @Repository
-public interface ColaboratorRepository extends MongoRepository<Colaborator, Long> {
+public interface CreatorRepository extends MongoRepository<Colaborator, Long> {
+
 }

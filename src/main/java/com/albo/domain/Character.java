@@ -1,4 +1,4 @@
-package com.albo.test;
+package com.albo.domain;
 
 import java.util.ArrayList;
 import java.util.Date;
