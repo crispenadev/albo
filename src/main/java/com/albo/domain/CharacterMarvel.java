@@ -1,20 +1,23 @@
 package com.albo.domain;
 
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CharacterMarvel {
 	
-		private Integer id;
+	
 
-		public Integer getId() {
-			return id;
-		}
+	public List<Item> items;
 
-		public void setId(Integer id) {
-			this.id = id;
-		}
-	  
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
 
 
 }

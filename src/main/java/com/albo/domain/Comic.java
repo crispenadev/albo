@@ -1,6 +1,6 @@
 package com.albo.domain;
 
-import java.util.List;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -9,7 +9,28 @@ public class Comic {
  
 	public int id;
 	
+	public String title;
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	public Creator creators;
+	
+	
+	public CharacterMarvel getCharacters() {
+		return characters;
+	}
+
+	public void setCharacters(CharacterMarvel characters) {
+		this.characters = characters;
+	}
+
+	public CharacterMarvel characters;
 
 	
 
