@@ -7,37 +7,38 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.albo.domain.Colaborator;
+import com.albo.domain.CharacterResponse;
+
 
 
 
 @RestController
-public class CreatorController {
+public class CharacterController {
 
 	@Autowired
-	private CreatorRepository creatorRepository;
+	private CharacterRepository creatorRepository;
 	
 
-	 @Value("${app.urlBase}")
+	 @Value("${urlBase}")
 	 private String urlBase;
 
 	
 	
 	@RequestMapping("marvel/characters/{nameHero}")
-	public List<Colaborator> characters() {
+	public List<CharacterResponse> characters() {
 		return null;
 
 	}
 
 
 
-	public CreatorRepository getCreatorRepository() {
+	public CharacterRepository getCreatorRepository() {
 		return creatorRepository;
 	}
 
 
 
-	public void setCreatorRepository(CreatorRepository creatorRepository) {
+	public void setCreatorRepository(CharacterRepository creatorRepository) {
 		this.creatorRepository = creatorRepository;
 	}
 }
