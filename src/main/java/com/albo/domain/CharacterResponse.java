@@ -1,6 +1,5 @@
 package com.albo.domain;
 
-import java.util.Date;
 import com.albo.domain.Character;
 
 import java.util.List;

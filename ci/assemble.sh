@@ -1,8 +1,20 @@
 #!/bin/bash
+set -o errexit
+set -o nounset
 
-#!/bin/bash
-nohup java -jar target/test-0.0.1-SNAPSHOT.jar > ${\logs}\log.txt 2>&1 &
-echo $! > ${\logs}\pid.file
+RAMA=`git branch -a| grep \* | cut -d ' ' -f2`;
 
+echo "Rama->${RAMA}";
+
+build_api(){
+    echo "Fetching changes..."
+    git pull origin develop;
+    mvn clean package -DskipTests;
+    echo "Finish SCPs..."
+}
+
+build_api
+
+exit $?
 
 

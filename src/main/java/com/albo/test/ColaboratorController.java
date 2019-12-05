@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.albo.domain.Colaborator;
+import com.albo.domain.ColaboratorResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
@@ -16,9 +16,9 @@ public class ColaboratorController {
 	private ColaboratorRepository colaboratorRepository;
 
 	@RequestMapping("marvel/colaborators/{nameHero}")
-	public Colaborator colaboratorsByHero(@PathVariable String nameHero)
+	public ColaboratorResponse colaboratorsByHero(@PathVariable String nameHero)
 			throws JsonMappingException, JsonProcessingException {
-		Colaborator cf = colaboratorRepository.findByName(nameHero);
+		ColaboratorResponse cf = colaboratorRepository.findByName(nameHero);
 		return cf;
 	}
 

@@ -22,15 +22,15 @@ public class Comic {
 	public Creator creators;
 	
 	
-	public CharacterMarvel getCharacters() {
+	public CharacterAux getCharacters() {
 		return characters;
 	}
 
-	public void setCharacters(CharacterMarvel characters) {
+	public void setCharacters(CharacterAux characters) {
 		this.characters = characters;
 	}
 
-	public CharacterMarvel characters;
+	public CharacterAux characters;
 
 	
 
