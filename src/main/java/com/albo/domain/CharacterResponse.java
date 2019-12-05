@@ -13,10 +13,11 @@ public class CharacterResponse {
 
 	@Id
 	private long id;
-	private Date lastSync;
+    private String name;
+	private String lastSync;
 	private List<Character> characters;
 
-	   public CharacterResponse(long id, Date lastSync) {
+	   public CharacterResponse(long id, String lastSync) {
    		this.id = id;
    		this.lastSync = lastSync;
    	}
@@ -28,11 +29,11 @@ public class CharacterResponse {
 		return id;
 	}
 
-	public Date getLastSync() {
+	public String getLastSync() {
 		return lastSync;
 	}
 
-	public void setLastSync(Date lastSync) {
+	public void setLastSync(String lastSync) {
 		this.lastSync = lastSync;
 	}
 
@@ -42,6 +43,20 @@ public class CharacterResponse {
 
 	public void setCharacters(List<Character> characters) {
 		this.characters = characters;
+	}
+
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

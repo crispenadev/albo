@@ -11,6 +11,19 @@ public class Colaborator {
 
 	    @Id
 	    private long id;
+	    private String name;
+	    private String lastSync;
+	    private ArrayList<String> editors;
+	    private ArrayList<String> writers;
+        private ArrayList<String> colirist;
+	    
+        
+        public Colaborator(long id, String lastSync) {
+    		this.id = id;
+    		this.lastSync = lastSync;
+    	}
+        
+        
 	    public long getId() {
 			return id;
 		}
@@ -21,12 +34,12 @@ public class Colaborator {
 		}
 
 
-		public Date getLastSync() {
+		public String getLastSync() {
 			return lastSync;
 		}
 
 
-		public void setLastSync(Date lastSync) {
+		public void setLastSync(String lastSync) {
 			this.lastSync = lastSync;
 		}
 
@@ -61,16 +74,19 @@ public class Colaborator {
 		}
 
 
-		private Date lastSync;
-	    private ArrayList<String> editors;
-	    private ArrayList<String> writers;
-        private ArrayList<String> colirist;
+		public String getName() {
+			return name;
+		}
+
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+
+		
 	   
-        
-        public Colaborator(long id, Date lastSync) {
-    		this.id = id;
-    		this.lastSync = lastSync;
-    	}
+   
 
 	
 

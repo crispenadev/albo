@@ -1,44 +1,29 @@
 package com.albo.test;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.albo.domain.CharacterResponse;
-
-
-
 
 @RestController
 public class CharacterController {
 
 	@Autowired
-	private CharacterRepository creatorRepository;
-	
+	private CharacterRepository characterRepository;
 
-	 @Value("${urlBase}")
-	 private String urlBase;
-
-	
-	
 	@RequestMapping("marvel/characters/{nameHero}")
-	public List<CharacterResponse> characters() {
-		return null;
-
+	public CharacterResponse characters(@PathVariable String nameHero){
+		CharacterResponse cf = characterRepository.findByName(nameHero);
+		return cf;
 	}
 
-
-
-	public CharacterRepository getCreatorRepository() {
-		return creatorRepository;
+	public CharacterRepository getCharacterRepository() {
+		return characterRepository;
 	}
 
-
-
-	public void setCreatorRepository(CharacterRepository creatorRepository) {
-		this.creatorRepository = creatorRepository;
+	public void setCharacterRepository(CharacterRepository characterRepository) {
+		this.characterRepository = characterRepository;
 	}
+
 }

@@ -7,4 +7,6 @@ import com.albo.domain.Colaborator;
 
 @Repository
 public interface ColaboratorRepository extends MongoRepository<Colaborator, Long> {
+	
+	public Colaborator findByName(String name);
 }

@@ -1,5 +1,6 @@
 package com.albo.test;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -53,7 +54,7 @@ public class SincronizatioService {
 	@Autowired
 	private CharacterRepository characterRepository;
 
-	@Scheduled(cron = "0 */50 * ? * *")
+	@Scheduled(cron = "0 */44 * ? * *")
 	public void saveCreators() throws JsonMappingException, JsonProcessingException {
 
 		String urlCharacters = urlBase + characterPath;
@@ -62,10 +63,18 @@ public class SincronizatioService {
 		for (int i = 0; i < arrayCharacteres.length(); i++) {
 			JSONObject object = arrayCharacteres.getJSONObject(i);
 			String characterId = object.getString("id");
+			String nameHero = object.getString("name");
 			ArrayList<String> editors = new ArrayList<String>();
 			ArrayList<String> colorists = new ArrayList<String>();
 			ArrayList<String> writers = new ArrayList<String>();
-			Colaborator c = new Colaborator(Long.valueOf(characterId), new Date());
+			
+			String pattern = "dd/M/yyyy hh:mm:ss";
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+			String date = simpleDateFormat.format(new Date());
+			
+			
+			
+			Colaborator c = new Colaborator(Long.valueOf(characterId), date);
 
 			String urlComics = urlBase + characterPath + "/";
 			urlComics = urlComics + characterId + "/comics";
@@ -94,13 +103,13 @@ public class SincronizatioService {
 			c.setColirist(colorists);
 			c.setWriters(writers);
 			c.setEditors(editors);
-			c.setLastSync(new Date());
+			c.setName(nameHero);
 			colaboratorRepository.save(c);
 		}
 
 	}
 
-	@Scheduled(cron = "0 */2 * ? * *")
+	@Scheduled(cron = "0 */44 * ? * *")
 	public void saveCharacters() throws JsonMappingException, JsonProcessingException {
 		String urlCharacters = urlBase + characterPath;
 		JSONArray arrayCharacteres = clientToMarvel(urlCharacters);
@@ -129,7 +138,7 @@ public class SincronizatioService {
 					List<String> set = characterComic.get(item.getName());
 					if (set == null) {
 						set = new ArrayList<String>();
-						characterComic.put(item.getName() +characterId, set);
+						characterComic.put(item.getName(), set);
 					}
 					set.add(comic.getTitle());
 
@@ -148,8 +157,13 @@ public class SincronizatioService {
 				
 			}
 			
-			CharacterResponse chR = new CharacterResponse(Long.valueOf(characterId), new Date());
+			String pattern = "dd/M/yyyy hh:mm:ss";
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+			String date = simpleDateFormat.format(new Date());
+			
+			CharacterResponse chR = new CharacterResponse(Long.valueOf(characterId), date);
 			chR.setCharacters(charactes);
+            chR.setName(nameHero);
 			characterRepository.save(chR);
 			
 		}
