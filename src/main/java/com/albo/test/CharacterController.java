@@ -15,6 +15,9 @@ public class CharacterController {
 	@RequestMapping("marvel/characters/{nameHero}")
 	public CharacterResponse characters(@PathVariable String nameHero){
 		CharacterResponse cf = characterRepository.findByName(nameHero);
+		if(cf == null) {
+			throw new DataNotFoundException(nameHero);
+		}
 		return cf;
 	}
 
